@@ -1,6 +1,6 @@
 import { pokedex } from "../../data/pokedex"
 
-export const getPokemonsbyName = (name) => {
+export const getPokemonsbyName = (name='') => {
     
     name = name.toLocaleLowerCase().trim();
     if(name.length === 0) return [];
