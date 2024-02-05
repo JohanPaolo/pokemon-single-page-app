@@ -27,28 +27,28 @@ export const Navbar = () => {
 
                 
                     <NavLink 
-                        className={({isActive})=> `nav-item nav-link ${isActive? 'active':''}`}
+                        className={({isActive})=> ` nav-item nav-link ${isActive? 'active':''} text-center d-flex align-items-center`}
                         to="/pokedex"
                     >
                         Pokedex
                     </NavLink>
 
                     <NavLink 
-                        className={({isActive})=> `nav-item nav-link ${isActive? 'active':''}`} 
+                        className={({isActive})=> ` nav-item nav-link ${isActive? 'active':''} text-center d-flex align-items-center`} 
                         to="/searchId"
                     >
                         Search by Id
                     </NavLink>
 
                     <NavLink 
-                        className={({isActive})=> `nav-item nav-link ${isActive? 'active':''}`} 
+                        className={({isActive})=> ` nav-item nav-link ${isActive? 'active':''} text-center d-flex align-items-center`} 
                         to="/searchName"
                     >
                         Search by name
                     </NavLink>
 
                     <NavLink 
-                        className={({isActive})=> `nav-item nav-link ${isActive? 'active':''}`} 
+                        className={({isActive})=> ` nav-item nav-link ${isActive? 'active':''} text-center d-flex align-items-center`} 
                         to="/searchType"
                     >
                         Search by type
