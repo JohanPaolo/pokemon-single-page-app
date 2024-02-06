@@ -30,6 +30,7 @@ export const PokemonPage = () => {
                 <p>{pokemon.xdescription}</p>
                 <p><b>Height: </b>{pokemon.height}</p>
                 <p><b>Weight: </b>{pokemon.weight}</p>
+                <p><b>Pokedex number: </b>{pokemon.id}</p>
                 <p>
                     <b>Types:</b> {pokemon.typeofpokemon && pokemon.typeofpokemon.join(" / ")}
                 </p>
@@ -48,7 +49,6 @@ export const PokemonPage = () => {
                     <li className="list-group-item"><b>Special attack: </b>{pokemon.special_attack}</li>
                     <li className="list-group-item"><b>Special defense: </b>{pokemon.special_defense}</li>
                     <li className="list-group-item"><b>Speed: </b>{pokemon.speed}</li>
-                    <li className="list-group-item"><b>HP: </b>{pokemon.hp}</li>
                 </ul>
                 <hr/>
                 <p>

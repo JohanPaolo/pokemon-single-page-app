@@ -1,83 +1,82 @@
-// import React from 'react';
-// import { useForm } from '../../hooks/useForm';
-// import queryString from 'query-string'
-// import { useLocation, useNavigate } from 'react-router-dom';
-// import { getPokemonsbyName } from '../helpers/getPokemonsbyName';
-// import { pokedex } from '../../data/pokedex';
-// import { PokemonCard } from '../components/PokemonCard';
-
-import { getPokemonsbyType } from "../helpers"
+import { useForm } from '../../hooks/useForm';
+import queryString from 'query-string';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { PokemonCard } from '../components/PokemonCard';
+import { getPokemonsById } from '../helpers/getPokemonsById';
 
 export const SearchIdPage = () => {
-  
-  getPokemonsbyType();
-//   // Pendiente la siguiente instalación:
-//   // yarn add query-string
+  const navigate = useNavigate();
+  const location = useLocation();
 
-//   const navigate = useNavigate();
-//   const location = useLocation();
+  const { q = '' } = queryString.parse(location.search);
 
-//   const {q = ''} = queryString.parse(location.search);
-//   const pokemons = getPokemonsbyName(q);
-//   const showSearch = (q.length === 0);
-//   const showError = (q.length > 0) && (pokemons.length === 0);
+  const pokemons = getPokemonsById(q);
+  const showSearch = (q.length === 0);
+  const showError = (q.length > 0) && (pokemons.length === 0);
 
-//   const onSearchSubmit = (event)=>{
-//     event.preventDefault();
-//     navigate(`?q=${searchText}`);
-//   }
+  const { searchText, onInputChange } = useForm({
+    searchText: q,
+  });
 
-//   const {searchText,onInputChange} = useForm({
-//     searchText: q
-//   });
 
-//   return (
-//     <>
-//       <h1 className='mt-2'>Search by Id</h1>
-//       <hr/>
+  const onSearchSubmit = async (event) => {
+    event.preventDefault();
 
-//       <div className="row">
-//         <div className="col-5">
-//           <h4>Searching</h4>
-//           <hr/>
-//           <form onSubmit={onSearchSubmit}>
-//             <input
-//              type='text'
-//              placeholder='Write pokemon ID'
-//              className='form-control'
-//              name='searchText'
-//              autoComplete='off'
-//              value={searchText}
-//              onChange={onInputChange} >
-//             </input>
+    navigate(`?q=${searchText}`);
+  };
 
-//             <button className='btn btn-outline-primary mt-2'>
-//               Search
-//             </button>
-//           </form>
-//         </div>
+  return (
+    <>
+      <h1 className='mt-2'>Search by Id</h1>
+      <hr />
 
-//         <div className="col-7">
-//           <h4>Results</h4>
-//           <hr/>
+      <div className='row'>
+        <div className='col-5'>
+          <h4>Searching</h4>
+          <hr />
+          <form onSubmit={onSearchSubmit}>
+            <input
+              type='text'
+              placeholder="Write pokemon's ID"
+              className='form-control'
+              name='searchText'
+              autoComplete='off'
+              value={searchText}
+              onChange={onInputChange}
+            />
 
-//           <div className="alert alert-primary animate__animated animated__fadeIn"
-//             style={{display: showSearch? '': 'none' }}>
-//             Search a pokemon
-//           </div>
+            <button type='submit' className='btn btn-outline-primary mt-2'>
+              Search
+            </button>
+          </form>
+        </div>
 
-//           <div className="alert alert-danger animate__animated animated__fadeIn"
-//             style={{display: showError? '': 'none' }}>
-//             Can't find {q}
-//           </div>
+        <div className='col-7'>
+          <h4>Results</h4>
+          <hr />
 
-//           {
-//             pokedex.map(pokemon=>{
-//               <PokemonCard key={pokemon.id} {...pokemon} />
-//             })
-//           }
-//         </div>
-//       </div>
-//     </>
-//   )
-}
+          <div
+            className='alert alert-primary animate__animated animate__fadeIn'
+            style={{ display: showSearch ? '' : 'none' }}
+          >
+            Search a pokemon
+          </div>
+
+          <div
+            className='alert alert-danger animate__animated animate__fadeIn'
+            style={{ display: showError ? '' : 'none' }}
+          >
+            Can't find {searchText}
+          </div>
+
+          {/* Utiliza el operador ternario para verificar si hay resultados antes de mapear */}
+          {pokemons.length > 0 ? (
+            pokemons.map((pokemon) => (
+              <PokemonCard key={pokemon.id} {...pokemon} />
+            ))
+          ) : null}
+        </div>
+      </div>
+    </>
+  );
+};
