@@ -1,8 +1,21 @@
-# React + Vite
+## Pokemon-single-page-app
+This a project realized to practice my React abilities
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Tecnologies
+* React
+* React-router
+* Animate-css
+* Bootstrap
+* Query-string
 
-Currently, two official plugins are available:
+# Steps to run the project
+1. yarn install: to install node_modules
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+2. yarn add react-router-dom@6: to install react-router, this is the version 6.0
+
+3. yarn add query-string
+
+IMPORTANT: Both bootstrap and animate css are referenced in the HTML file
+
+# Data source
+https://github.com/stolzz0613/Pokedex
