@@ -18,4 +18,4 @@ This a project realized to practice my React abilities
 IMPORTANT: Both bootstrap and animate css are referenced in the HTML file
 
 # Data source
-https://github.com/stolzz0613/Pokedex
+https://github.com/stolzz0613/Pokedex/blob/source/src/extra.json
